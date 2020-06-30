@@ -57,9 +57,16 @@ public class RoleService {
      * delete given role
      * @param id
      */
-    public void deletRole(int id){
-        Role role = roleDAO.getOne(id);
-        roleDAO.delete(role);
+    public String deletRole(int id){
+
+        if(roleDAO.existsById(id)){
+            Role role = roleDAO.getOne(id);
+            roleDAO.delete(role);
+            return "role delete successfully";
+        }else {
+            return "Role not found for given id: "+ id;
+        }
+
     }
 
     /**
