@@ -10,13 +10,11 @@ import { Router } from '@angular/router';
 })
 export class AccountService {
   public userList;
-  // private authClient = new OktaAuth({
-  //     issuer: 'https://{YourOktaDomain}/oauth2/default',
-  //     clientId: '{ClientId}'
-  // });
+  public user: User;
 
-  public isAuthenticated = new BehaviorSubject<boolean>(false);
+  public isAuthenticated;
   constructor(private http: HttpClient, private router: Router) {
+    this.isAuthenticated = false;
     this.http.get('./assets/userAccounts.json').subscribe(
       data => {
         this.userList = data as string [];	
@@ -27,25 +25,31 @@ export class AccountService {
     );
   }
   async login(email: string, password: string) {
-    var user: User;
-    user = await this.getUserByEmail(email);
-    console.log(user);
-    if(user === undefined){
-      this.isAuthenticated.next(false);
+    var user1: User;
+    this.user = null;
+    user1 = await this.getUserByEmail(email);
+    console.log(user1);
+    
+
+    if(user1 === undefined){
+      this.isAuthenticated = false;
     }else{
-      if(user.password === email){
-        this.isAuthenticated.next(true);
+      if(user1.password === password){
+        this.user = user1;
+        this.isAuthenticated = true;
+        console.log(this.isAuthenticated);
+        this.router.navigate(['/dashboard']);
       }else{
-        this.isAuthenticated.next(false);
+        this.isAuthenticated = false;
       }
     }
-    // this.isAuthenticated.next(true);
   }
 
-      async logout(redirect: string) {
+      async logout() {
         try {
-          this.isAuthenticated.next(false);
-          this.router.navigate([redirect]);
+          this.isAuthenticated = false;
+          this.user = null;
+          this.router.navigate(['login']);
         } catch (err) {
           console.error(err);
         }

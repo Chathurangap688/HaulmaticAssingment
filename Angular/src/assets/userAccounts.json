@@ -21,6 +21,6 @@
     {"email":"abcj@123.com", "password": "passwordj", "name":"abcj"},
     {"email":"abck@123.com", "password": "passwordk", "name":"abck"},
     {"email":"abcl@123.com", "password": "passwordl", "name":"abcl"},
-    {"email":"abcm@123.com", "password": "passwordm", "name":"abcm"}
+    {"email":"example@email.com", "password": "example#123", "name":"example user"}
 
 ]
