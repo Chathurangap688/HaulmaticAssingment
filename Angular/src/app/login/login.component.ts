@@ -10,10 +10,10 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class LoginComponent implements OnInit {
   form: FormGroup;
-    public loginInvalid: boolean;
-    private formSubmitAttempt: boolean;
-    private returnUrl: string;
-    constructor(
+  public loginInvalid: boolean;
+  private formSubmitAttempt: boolean;
+  private returnUrl: string;
+  constructor(
       private fb: FormBuilder,
       private route: ActivatedRoute,
       private router: Router,
@@ -37,8 +37,8 @@ export class LoginComponent implements OnInit {
         try {
           const username = this.form.get('username').value;
           const password = this.form.get('password').value;
-          this.accountService.login(username, password);
-          if(this.accountService.isAuthenticated){
+          await this.accountService.login(username, password);
+          if (this.accountService.isAuthenticated){
             this.loginInvalid = false;
           }else{
             this.loginInvalid = true;
