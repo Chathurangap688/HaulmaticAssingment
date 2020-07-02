@@ -15,24 +15,25 @@ export class AccountService {
     this.isAuthenticated = false;
     this.http.get('./assets/userAccounts.json').subscribe(
       data => {
-        this.userList = data as string [];	
+        this.userList = data as string [];
       },
       (err: HttpErrorResponse) => {
         console.log (err.message);
       }
     );
   }
+  // tslint:disable-next-line:typedef
   async login(email: string, password: string) {
-    var user1: User;
+    let user1: User;
     this.user = null;
     user1 = await this.getUserByEmail(email);
     console.log(user1);
-    
 
-    if(user1 === undefined){
+
+    if (user1 === undefined){
       this.isAuthenticated = false;
     }else{
-      if(user1.password === password){
+      if (user1.password === password){
         this.user = user1;
         this.isAuthenticated = true;
         console.log(this.isAuthenticated);
@@ -43,31 +44,19 @@ export class AccountService {
     }
   }
 
-      async logout() {
-        try {
-          this.isAuthenticated = false;
-          this.user = null;
-          this.router.navigate(['login']);
-        } catch (err) {
-          console.error(err);
-        }
+  // tslint:disable-next-line:typedef
+  async logout() {
+    try {
+      this.isAuthenticated = false;
+      this.user = null;
+      this.router.navigate(['login']);
+    } catch (err) {
+      console.error(err);
+    }
   }
+  // tslint:disable-next-line:typedef
   getUserByEmail(email){
     return this.userList.find(u => u.email === email);
   }
 
-  login1(username, password) {
-      console.log(this.userList);
-      return this.userList[0];
-
-  }
-  emailValidate(){
-
-  }
-
-  // async checkAuthenticated() {
-  //       const authenticated = await this.authClient.session.exists();
-  //       this.isAuthenticated.next(authenticated);
-  //       return authenticated;
-  // }
 }

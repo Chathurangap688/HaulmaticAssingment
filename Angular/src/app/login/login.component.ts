@@ -20,15 +20,16 @@ export class LoginComponent implements OnInit {
       private accountService: AccountService
     ) {
     }
+    // tslint:disable-next-line:typedef
     async ngOnInit() {
           this.returnUrl = this.route.snapshot.queryParams.returnUrl || '/game';
-
           this.form = this.fb.group({
             username: ['', Validators.email],
             password: ['', Validators.required]
           });
 
         }
+    // tslint:disable-next-line:typedef
     async onSubmit() {
       this.loginInvalid = false;
       this.formSubmitAttempt = false;
@@ -37,9 +38,11 @@ export class LoginComponent implements OnInit {
           const username = this.form.get('username').value;
           const password = this.form.get('password').value;
           this.accountService.login(username, password);
-          // if(this.accountService.isAuthenticated){
-          //   this.router.navigate(['/dashboard']);
-          // }
+          if(this.accountService.isAuthenticated){
+            this.loginInvalid = false;
+          }else{
+            this.loginInvalid = true;
+          }
         } catch (err) {
           this.loginInvalid = true;
         }

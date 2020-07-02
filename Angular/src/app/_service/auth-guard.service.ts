@@ -9,6 +9,7 @@ export class AuthGuardService implements CanActivate {
 
   constructor(public accountService: AccountService, public router: Router) {}
 
+  // tslint:disable-next-line:typedef
   async canActivate() {
     if (!await this.accountService.isAuthenticated) {
       await this.router.navigate(['login']);
