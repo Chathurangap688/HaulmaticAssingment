@@ -1,10 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { HttpErrorResponse } from '@angular/common/http';
-import { BehaviorSubject, from } from 'rxjs';
 import {User} from './../_models/user';
 import { Router } from '@angular/router';
-// import OktaAuth from '@okta/okta-auth-js';
 @Injectable({
   providedIn: 'root'
 })
