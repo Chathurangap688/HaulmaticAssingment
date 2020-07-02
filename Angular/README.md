@@ -2,6 +2,11 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.0.0.
 
+## Example Data
+Example data jason files are locate on `src/accert` folder
+Thre are two files,
+    `userAccounts.json` file is a file to save application users email, password and name
+    `example.json` is a file that saves data displayed on the dashboard
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
