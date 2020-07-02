@@ -4,4 +4,4 @@ There are two folder components, namely, the `Angular` Project and the `Spring B
 
 # Contact Info
 
-[bmcpthilakawansha@gmail.com](bmcpthilakawansha@gmail.com)
+email:[bmcpthilakawansha@gmail.com](bmcpthilakawansha@gmail.com)
